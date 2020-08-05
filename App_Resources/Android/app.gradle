@@ -13,9 +13,13 @@ android {
   defaultConfig {
     minSdkVersion 17
     generatedDensities = []
-	multiDexEnabled true
+    applicationId ="org.nativescript.TeamA"
+    multiDexEnabled true
   }
   aaptOptions {
     additionalParameters "--no-version-vectors"
   }
+dependencies {
+	compile "com.android.support:multidex:1.0.0"
+}
 }

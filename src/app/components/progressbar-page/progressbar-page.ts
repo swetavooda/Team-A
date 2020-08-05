@@ -1,11 +1,14 @@
-import {Component, OnInit} from "@angular/core";
 import { Router } from "@angular/router";
+import { Component, OnInit, NgZone, Injectable } from '@angular/core';
+import { storage } from "nativescript-plugin-firebase";
+import { Observable, EventData } from 'tns-core-modules/data/observable';
+import { File, knownFolders, path } from "tns-core-modules/file-system";
+import { BehaviorSubject } from 'rxjs';
 @Component({
     selector: "progressbar-page",
     templateUrl: "progressbar-page.html",
-	styleUrls : ["./progressbar-page.css"],
-    moduleId: module.id
-	
+	styleUrls : ["./progressbar-page.css"]
+
 })
 
 
@@ -16,10 +19,10 @@ export class progressbarpage{
     Completion="";
     percent=0;
     public ngOnInit() :void {
-        this.path= knownFolders.currentApp().path+"//images//test.jpg";
+        this.path= knownFolders.currentApp().path+"/images/test.jpg";
      }
     message='';
-    onProgressLoaded(event) {
+    onProgressLoaded(event,percent) {
         event.object.color = "red";
         event.object.backgroundColor = "blue";
       }
@@ -30,7 +33,7 @@ export class progressbarpage{
     password;
     uploadFile(args: EventData) {
         var metadata = {
-            contentType: "demo/test",
+            contentType: "Image",
             contentLanguage: "fr",
             customMetadata: {
               "foo": "bar",
@@ -39,7 +42,7 @@ export class progressbarpage{
           };
         const appPath = knownFolders.currentApp().path;
         // The path to he file  we want to upload (this one is in `app/images`)
-        const logoPath = appPath+"//images//test.jpg";
+        const logoPath = appPath+"//images//test.jpg"
 
         // Upload the file with the options below:
         storage.uploadFile({
@@ -54,13 +57,17 @@ export class progressbarpage{
             // get notified of file upload progress
             onProgress: status => {
                 console.log("Uploaded fraction: " + status.fractionCompleted);
-                this.percent=status.percentageCompleted.valueOf();
+                this.percent = status.percentageCompleted.valueOf();
+                if(this.percent==100){
+                    alert("Upload Completed Succesfully");
+                }
                 console.log("Percentage complete: " + status.percentageCompleted);
             },metadata
         }).then(uploadedFile => {
             console.log("File uploaded: " + JSON.stringify(uploadedFile));
             this.message = "File uploaded: " + JSON.stringify(uploadedFile);
         }).catch(err => {
+            alert("There was a problem uploading")
             console.log(err);
         })
     }

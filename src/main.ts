@@ -28,5 +28,9 @@ import { AppModule } from "./app/app.module";
     ],
 })
 class AppComponentModule {}
-
+const firebase = require("nativescript-plugin-firebase");
+firebase.init({
+        storageBucket: "gs://hri7238.appspot.com" // this is the appsport url copied in step 2
+        // any other options follows here
+    })
 platformNativeScriptDynamic().bootstrapModule(AppComponentModule);
