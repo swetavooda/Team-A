@@ -8,6 +8,5 @@
         <Button class="uploadButton" text="Upload" (tap)="uploadFile()"></Button>
         <Label id="123" [text]="Completion"></Label>
         <Progress [value]="percent" maxValue="100" (loaded)="onProgressLoaded($event)" class="m-t-20 m-b-10"></Progress>
-        <TextField [(ngModel)]="username" hint="Enter Username"></TextField>
-        <TextField [(ngModel)]="password" hint="Enter Password"></TextField>
+
 </StackLayout>
