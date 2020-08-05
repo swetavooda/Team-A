@@ -1,5 +1,12 @@
 <ActionBar title="ProgressBar page">
 </ActionBar>
-<StackLayout>
-    <label text="Hello Hrithik write you code here"></label>
+<StackLayout id="hello">
+        <Label class="tittle" text="Demo for uploading image to FireBase"></Label>
+        <Label text="Image : Test.jpg"></Label>
+        <Label text="FireBase : Hri7238"></Label>
+        <Image [src]="path"></Image>
+        <Button class="uploadButton" text="Upload" (tap)="uploadFile()"></Button>
+        <Label id="123" [text]="Completion"></Label>
+        <Progress [value]="percent" maxValue="100" (loaded)="onProgressLoaded($event)" class="m-t-20 m-b-10"></Progress>
+
 </StackLayout>
