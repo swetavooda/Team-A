@@ -27,6 +27,7 @@
     "@nativescript/angular": "~9.0.0",
     "@nativescript/theme": "~2.3.0",
     "nativescript-barcodescanner": "^3.4.2",
+    "nativescript-camera": "^4.5.0",
     "nativescript-plugin-firebase": "^10.5.2",
     "reflect-metadata": "~0.1.12",
     "rxjs": "^6.5.0",

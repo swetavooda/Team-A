@@ -1,5 +1,8 @@
 <ActionBar title="Camera Page">
 </ActionBar>
-<StackLayout>
-    <label text="Hello Sweta write you code here"></label>
-</StackLayout>
+<GridLayout>
+    <StackLayout>
+        <Image *ngIf="myImage" class="imageCss" src="{{myImage}}" strech="aspectFill" ></Image>
+        <Button class="btn btn-primary" text="Open Camera" (tap)="openCam()"></Button>
+    </StackLayout>  
+</GridLayout>
