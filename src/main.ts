@@ -6,7 +6,9 @@ import { AppComponent } from "./app/app.component";
 import { NativeScriptRouterModule } from "@nativescript/angular/router";
 import { appComponents, appRoutes } from "./app/app-routing.module";
 import {HttpClientModule} from "@angular/common/http";
-
+import { ProcessHTTPMsgService } from "./app/components/services/process-httpmsg.service";
+import { ButtonService } from "./app/components/services/button.service";
+import { baseURL } from "./app/components/shared/baseurl";
 import { AppModule } from "./app/app.module";
 
 // A traditional NativeScript application starts by initializing global objects,
@@ -26,6 +28,9 @@ import { AppModule } from "./app/app.module";
         NativeScriptRouterModule.forRoot(appRoutes),
         HttpClientModule
     ],
+    providers: [{provide: 'baseURL', useValue: baseURL},
+    ButtonService,
+    ProcessHTTPMsgService]
 })
 class AppComponentModule {}
 const firebase = require("nativescript-plugin-firebase");

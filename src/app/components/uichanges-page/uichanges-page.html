@@ -1,5 +1,10 @@
 <ActionBar title="UI changes Page">
 </ActionBar>
-<StackLayout>
-    <label text="Hello Sweta write you code here"></label>
-</StackLayout>
+<GridLayout>
+    <Button class="btn btn-primary" text="Refresh" (tap)="refresh()"></Button>
+    <ListView [items]="buttons" class="list-group" *ngIf="buttons">
+        <ng-template let-button="item">
+            <Button class="btn btn-primary" [text]="button.name" mat-flat-button [color]="button.color" ></Button>
+        </ng-template>        
+    </ListView>
+</GridLayout>
