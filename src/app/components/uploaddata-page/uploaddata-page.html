@@ -6,13 +6,15 @@
 
 
     <Label class="subheading" text="Name:"></Label>
-    <TextField class="coloring" hint="Enter Name" [(ngModel)]="name_details"></TextField>
+    <TextField class="coloring" hint="Enter Name" [text]="name_details" (textChange)="onTextChange1($event)"></TextField>
+
+
 
     <Label class="subheading" text="Email: "></Label>
-    <TextField class="coloring" hint="Enter Email Address" autocapitalizationType="none" autocorrect="false" [(ngModel)]="add_details"></TextField>
+    <TextField class="coloring" hint="Enter Email Address" autocapitalizationType="none" autocorrect="false" [text]="add_details" (textChange)="onTextChange2($event)"></TextField>
 
     <Label class="subheading" text="password: "></Label>
-    <TextField  class="coloring" hint="Enter password" [(ngModel)]="pass_details"></TextField>
+    <TextField  class="coloring" hint="Enter password" [text]="pass_details" (textChange)="onTextChange3($event)"></TextField>
 
 
     <Button class="submit" text="Submit" (tap)="uploadFile()"></Button>

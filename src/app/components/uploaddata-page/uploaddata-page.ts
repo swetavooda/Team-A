@@ -1,6 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import { Router } from "@angular/router";
 import * as firebase from "nativescript-plugin-firebase";
+import { TextView } from "tns-core-modules/ui/text-view";
+import { EventData } from "tns-core-modules/data/observable";
 @Component({
     selector: "uploaddata-page",
     templateUrl: "uploaddata-page.html",
@@ -16,9 +18,20 @@ export class uploaddatapage{
 
 
     }
+    onTextChange1(args: EventData) {
+        const tv = args.object as TextView;
+        this.name_details=tv.text;
+    }
+    onTextChange2(args: EventData) {
+        const tv = args.object as TextView;
+        this.add_details=tv.text;
+    }
+    onTextChange3(args: EventData) {
+        const tv = args.object as TextView;
+        this.pass_details=tv.text;
+    }
     uploadFile(){
-        //console.log("succesfully stores Mr/MS. "+this.name_details);
-        console.log("100%");
+
         console.log(this.name_details+"   "+this.pass_details+"  "+this.add_details);
         let data={
             "name":this.name_details,
